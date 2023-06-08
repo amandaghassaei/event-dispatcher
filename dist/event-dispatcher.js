@@ -90,6 +90,11 @@
                 }
             }
         };
+        /**
+         * Returns the number of currently bound listeners for a given event.
+         * @param type - Event type.
+         * @returns - The number of currently bound listeners for this event type.
+         */
         EventDispatcherPrototype.prototype.getNumberOfListenersForEvent = function (type) {
             var __listeners = this.__listeners;
             if (!__listeners)

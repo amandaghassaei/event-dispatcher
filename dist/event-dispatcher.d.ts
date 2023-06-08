@@ -34,6 +34,11 @@ declare class EventDispatcherPrototype<T> {
      * @param object - An optional object to pass to event listener function.
      */
     protected _dispatchEvent(type: T, object?: any): void;
+    /**
+     * Returns the number of currently bound listeners for a given event.
+     * @param type - Event type.
+     * @returns - The number of currently bound listeners for this event type.
+     */
     getNumberOfListenersForEvent(type: T): number;
     /**
      * Dispose all currently bound listeners from this object.

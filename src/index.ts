@@ -89,6 +89,11 @@ export class EventDispatcherPrototype<T> {
 		}
 	}
 
+	/**
+	 * Returns the number of currently bound listeners for a given event.
+	 * @param type - Event type.
+	 * @returns - The number of currently bound listeners for this event type.
+	 */
 	getNumberOfListenersForEvent(type: T) {
 		const { __listeners } = this;
 		if (!__listeners) return 0;

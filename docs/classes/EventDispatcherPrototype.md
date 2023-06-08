@@ -121,15 +121,19 @@ ___
 
 ▸ **getNumberOfListenersForEvent**(`type`): `number`
 
+Returns the number of currently bound listeners for a given event.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `type` | `T` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | `T` | Event type. |
 
 #### Returns
 
 `number`
+
+- The number of currently bound listeners for this event type.
 
 ___
 
