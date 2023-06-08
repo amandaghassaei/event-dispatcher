@@ -20,10 +20,10 @@ for an example of how to subclass EventDispatcherPrototype.
 
 ### Methods
 
-- [\_addOneTimeEventListener](EventDispatcherPrototype.md#_addonetimeeventlistener)
-- [\_addEventListener](EventDispatcherPrototype.md#_addeventlistener)
-- [\_removeEventListener](EventDispatcherPrototype.md#_removeeventlistener)
-- [\_dispatchEvent](EventDispatcherPrototype.md#_dispatchevent)
+- [\_prototype\_addOneTimeEventListener](EventDispatcherPrototype.md#_prototype_addonetimeeventlistener)
+- [\_prototype\_addEventListener](EventDispatcherPrototype.md#_prototype_addeventlistener)
+- [\_prototype\_removeEventListener](EventDispatcherPrototype.md#_prototype_removeeventlistener)
+- [\_prototype\_dispatchEvent](EventDispatcherPrototype.md#_prototype_dispatchevent)
 - [getNumberOfListenersForEvent](EventDispatcherPrototype.md#getnumberoflistenersforevent)
 - [dispose](EventDispatcherPrototype.md#dispose)
 
@@ -41,9 +41,9 @@ for an example of how to subclass EventDispatcherPrototype.
 
 ## Methods
 
-### \_addOneTimeEventListener
+### \_prototype\_addOneTimeEventListener
 
-▸ `Protected` **_addOneTimeEventListener**(`type`, `listener`): `void`
+▸ `Protected` **_prototype_addOneTimeEventListener**(`type`, `listener`): `void`
 
 Add one time event listener for a given event type (unsubscriber is called after first dispatch).
 
@@ -60,9 +60,9 @@ Add one time event listener for a given event type (unsubscriber is called after
 
 ___
 
-### \_addEventListener
+### \_prototype\_addEventListener
 
-▸ `Protected` **_addEventListener**(`type`, `listener`): `void`
+▸ `Protected` **_prototype_addEventListener**(`type`, `listener`): `void`
 
 Add an event listener for a given event type.
 
@@ -79,9 +79,9 @@ Add an event listener for a given event type.
 
 ___
 
-### \_removeEventListener
+### \_prototype\_removeEventListener
 
-▸ `Protected` **_removeEventListener**(`type`, `listener`): `void`
+▸ `Protected` **_prototype_removeEventListener**(`type`, `listener`): `void`
 
 Remove an event listener for a given event type.
 
@@ -98,9 +98,9 @@ Remove an event listener for a given event type.
 
 ___
 
-### \_dispatchEvent
+### \_prototype\_dispatchEvent
 
-▸ `Protected` **_dispatchEvent**(`type`, `object?`): `void`
+▸ `Protected` **_prototype_dispatchEvent**(`type`, `object?`): `void`
 
 Dispatch an event from this object.
 

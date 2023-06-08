@@ -27,7 +27,7 @@ class EventDispatcher<T> extends EventDispatcherPrototype<T> {
 	addOneTimeEventListener(type: typeof THING_A_REMOVED_EVENT, listener: () => void): void;
 	addOneTimeEventListener(type: typeof THING_B_REMOVED_EVENT, listener: () => void): void;
 	addOneTimeEventListener(type: any, listener: EventListener) {
-		this._addOneTimeEventListener(type, listener);
+		this._prototype_addOneTimeEventListener(type, listener);
 	}
 
 	addEventListener(type: typeof THING_A_CHANGE_EVENT, listener: (object: ThingA) => void): void;
@@ -35,7 +35,7 @@ class EventDispatcher<T> extends EventDispatcherPrototype<T> {
 	addEventListener(type: typeof THING_B_CHANGE_EVENT, listener: (object: ThingB) => void): void;
 	addEventListener(type: typeof THING_B_FINISHED_EVENT, listener: (object: ThingB) => void): void;
 	addEventListener(type: any, listener: EventListener) {
-		this._addEventListener(type, listener);
+		this._prototype_addEventListener(type, listener);
 	}
 
 	removeEventListener(type: typeof THING_A_CHANGE_EVENT, listener: (object: ThingA) => void): void;
@@ -43,7 +43,7 @@ class EventDispatcher<T> extends EventDispatcherPrototype<T> {
 	removeEventListener(type: typeof THING_B_CHANGE_EVENT, listener: (object: ThingB) => void): void;
 	removeEventListener(type: typeof THING_B_FINISHED_EVENT, listener: (object: ThingB) => void): void;
 	removeEventListener(type: any, listener: EventListener) {
-		this._removeEventListener(type, listener);
+		this._prototype_removeEventListener(type, listener);
 	}
 
 	dispatchEvent(type: typeof THING_A_CHANGE_EVENT, object: ThingA): void;
@@ -53,7 +53,7 @@ class EventDispatcher<T> extends EventDispatcherPrototype<T> {
 	dispatchEvent(type: typeof THING_A_REMOVED_EVENT): void;
 	dispatchEvent(type: typeof THING_B_REMOVED_EVENT): void;
 	dispatchEvent(type: any, object?: any) {
-		this._dispatchEvent(type, object);
+		this._prototype_dispatchEvent(type, object);
 	}
 }
 

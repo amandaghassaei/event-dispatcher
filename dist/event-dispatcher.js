@@ -19,13 +19,13 @@
          * @param type - The type of the event as a string.
          * @param listener - An event listener function.
          */
-        EventDispatcherPrototype.prototype._addOneTimeEventListener = function (type, listener) {
+        EventDispatcherPrototype.prototype._prototype_addOneTimeEventListener = function (type, listener) {
             var _this = this;
             var _listener = function (object) {
                 listener(object);
-                _this._removeEventListener(type, _listener);
+                _this._prototype_removeEventListener(type, _listener);
             };
-            this._addEventListener(type, _listener);
+            this._prototype_addEventListener(type, _listener);
             // return () => {
             // 	this._removeEventListener(type, _listener);
             // };
@@ -35,7 +35,7 @@
          * @param type - The type of the event as a string.
          * @param listener - An event listener function
          */
-        EventDispatcherPrototype.prototype._addEventListener = function (type, listener) {
+        EventDispatcherPrototype.prototype._prototype_addEventListener = function (type, listener) {
             if (!this.__listeners)
                 this.__listeners = {};
             var listeners = this.__listeners;
@@ -58,7 +58,7 @@
          * @param type - The type of the event as a string.
          * @param listener - The currently bound event listener function.
          */
-        EventDispatcherPrototype.prototype._removeEventListener = function (type, listener) {
+        EventDispatcherPrototype.prototype._prototype_removeEventListener = function (type, listener) {
             var listeners = this.__listeners;
             if (listeners) {
                 var listenerArray = listeners[type];
@@ -77,7 +77,7 @@
          * @param type - The type of the event as a string.
          * @param object - An optional object to pass to event listener function.
          */
-        EventDispatcherPrototype.prototype._dispatchEvent = function (type, object) {
+        EventDispatcherPrototype.prototype._prototype_dispatchEvent = function (type, object) {
             if (this.__listeners === undefined)
                 return;
             var listeners = this.__listeners;

@@ -15,25 +15,25 @@ declare class EventDispatcherPrototype<T> {
      * @param type - The type of the event as a string.
      * @param listener - An event listener function.
      */
-    protected _addOneTimeEventListener(type: T, listener: EventListener): void;
+    protected _prototype_addOneTimeEventListener(type: T, listener: EventListener): void;
     /**
      * Add an event listener for a given event type.
      * @param type - The type of the event as a string.
      * @param listener - An event listener function
      */
-    protected _addEventListener(type: T, listener: EventListener): void;
+    protected _prototype_addEventListener(type: T, listener: EventListener): void;
     /**
      * Remove an event listener for a given event type.
      * @param type - The type of the event as a string.
      * @param listener - The currently bound event listener function.
      */
-    protected _removeEventListener(type: T, listener: EventListener): void;
+    protected _prototype_removeEventListener(type: T, listener: EventListener): void;
     /**
      * Dispatch an event from this object.
      * @param type - The type of the event as a string.
      * @param object - An optional object to pass to event listener function.
      */
-    protected _dispatchEvent(type: T, object?: any): void;
+    protected _prototype_dispatchEvent(type: T, object?: any): void;
     /**
      * Returns the number of currently bound listeners for a given event.
      * @param type - Event type.
