@@ -1,7 +1,7 @@
 {
   "name": "@amandaghassaei/event-dispatcher",
   "version": "1.0.0",
-  "description": "Parent class to support custom event listeners, written in typescript.",
+  "description": "Parent class to support custom event listeners, written in TypeScript.",
   "main": "dist/event-dispatcher.js",
   "types": "dist/event-dispatcher.d.ts",
   "keywords": [

@@ -7,7 +7,7 @@
 
 Parent class to support custom event listeners.
 
-- Written in Typescript with exported type declarations.
+- Written in TypeScript with exported type declarations.
 - Includes unit tests with 100% coverage.
 
 Table of Contents:
