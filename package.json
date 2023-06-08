@@ -4,6 +4,13 @@
   "description": "Parent class to support custom event listeners, written in typescript.",
   "main": "dist/event-dispatcher.js",
   "types": "dist/event-dispatcher.d.ts",
+  "keywords": [
+    "event",
+    "listener",
+    "addEventListener",
+    "removeEventListener",
+	"dispatch"
+  ],
   "scripts": {
     "build": "rollup --config && npm run docs && npm run make-coverage-badge",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.ts'",
