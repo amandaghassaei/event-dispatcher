@@ -1,6 +1,6 @@
 {
   "name": "@amandaghassaei/event-dispatcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Parent class to support custom event listeners, written in TypeScript.",
   "main": "dist/event-dispatcher.js",
   "types": "dist/event-dispatcher.d.ts",
@@ -9,7 +9,7 @@
     "listener",
     "addEventListener",
     "removeEventListener",
-	"dispatch"
+    "dispatch"
   ],
   "scripts": {
     "build": "rollup --config && npm run docs && npm run make-coverage-badge",
