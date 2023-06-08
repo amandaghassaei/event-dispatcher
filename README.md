@@ -1,11 +1,11 @@
 # @amandaghassaei/event-dispatcher
-<!-- [![NPM Package](https://img.shields.io/npm/v/@amandaghassaei/event-dispatcher)](https://www.npmjs.com/package/@amandaghassaei/event-dispatcher)
+[![NPM Package](https://img.shields.io/npm/v/@amandaghassaei/event-dispatcher)](https://www.npmjs.com/package/@amandaghassaei/event-dispatcher)
 [![Build Size](https://img.shields.io/bundlephobia/min/@amandaghassaei/event-dispatcher)](https://bundlephobia.com/result?p=@amandaghassaei/event-dispatcher)
-[![NPM Downloads](https://img.shields.io/npm/dw/@amandaghassaei/event-dispatcher)](https://www.npmtrends.com/@amandaghassaei/event-dispatcher) -->
-<!-- [![License](https://img.shields.io/npm/l/@amandaghassaei/event-dispatcher)](https://github.com/amandaghassaei/event-dispatcher/blob/main/LICENSE) -->
+[![NPM Downloads](https://img.shields.io/npm/dw/@amandaghassaei/event-dispatcher)](https://www.npmtrends.com/@amandaghassaei/event-dispatcher)
+[![License](https://img.shields.io/npm/l/@amandaghassaei/event-dispatcher)](https://github.com/amandaghassaei/event-dispatcher/blob/main/LICENSE)
 ![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?prefix=$coverage$)
 
-EventDispatcher parent class to support custom event listeners.
+Parent class to support custom event listeners.
 
 - Written in Typescript with exported type declarations.
 - Includes unit tests with 100% coverage.
@@ -58,7 +58,7 @@ import {
   EventListener,
 } from '@amandaghassaei/event-dispatcher';
 
-// Define events.
+// Define events and class event types.
 const THING_A_CHANGE_EVENT = 'THING_A_CHANGE_EVENT';
 const THING_A_FINISHED_EVENT = 'THING_A_FINISHED_EVENT';
 const THING_A_REMOVED_EVENT = 'THING_A_REMOVED_EVENT';
@@ -74,8 +74,9 @@ type ThingBEventType =
   typeof THING_B_FINISHED_EVENT |
   typeof THING_B_REMOVED_EVENT;
 
-  // Create a custom EventDispatcher subclass with correct event typing for your application.
-
+// Create a custom EventDispatcher subclass.
+// Use function overloads to define correct typing of subclass event/listener pairs.
+// Event listeners may accept an optional parameter.
 class EventDispatcher<T> extends EventDispatcherPrototype<T> {
   addOneTimeEventListener(type: typeof THING_A_REMOVED_EVENT, listener: () => void): void;
   addOneTimeEventListener(type: typeof THING_B_REMOVED_EVENT, listener: () => void): void;
@@ -99,6 +100,8 @@ class EventDispatcher<T> extends EventDispatcherPrototype<T> {
     this._removeEventListener(type, listener);
   }
 
+  // You may decide to make dispatchEvent a protected function,
+  // which can only be called from within the subclass.
   dispatchEvent(type: typeof THING_A_CHANGE_EVENT, object: ThingA): void;
   dispatchEvent(type: typeof THING_A_FINISHED_EVENT, object: ThingA): void;
   dispatchEvent(type: typeof THING_B_CHANGE_EVENT, object: ThingB): void;
@@ -110,12 +113,10 @@ class EventDispatcher<T> extends EventDispatcherPrototype<T> {
   }
 }
 
-// Define your classes.
-
+// Define your EventListener subclasses.
 class ThingA extends EventDispatcher<ThingAEventType>{
   ...
 }
-
 class ThingB extends EventDispatcher<ThingBEventType>{
   ...
 }
