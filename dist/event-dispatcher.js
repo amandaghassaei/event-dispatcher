@@ -70,7 +70,7 @@
                     }
                 }
             }
-            throw new Error("Event listener \"".concat(listener.name, "\" with value ").concat(listener.toString(), " is not present on object ").concat(this.constructor.name, ", ignoring call to _removeEventListener()."));
+            // throw new Error(`Event listener "${listener.name}" with value ${listener.toString()} is not present on object ${this.constructor.name}, ignoring call to _removeEventListener().`);
         };
         /**
          * Dispatch an event from this object.

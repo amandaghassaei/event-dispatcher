@@ -147,9 +147,12 @@ describe('EventDispatcherPrototype', () => {
 		expect(thingA.getNumberOfListenersForEvent(THING_A_CHANGE_EVENT)).to.equal(1);
 		// Warn for removed event listeners that were never added.
 		const unboundFunction = () => {};
-		expect(() => {thingA.removeEventListener(THING_A_FINISHED_EVENT, unboundFunction);}).to.throw('Event listener "unboundFunction" with value function () { } is not present on object ThingA, ignoring call to _removeEventListener()');
-		expect(() => {thingA.removeEventListener(THING_A_CHANGE_EVENT, unboundFunction);}).to.throw('Event listener "unboundFunction" with value function () { } is not present on object ThingA, ignoring call to _removeEventListener()');
-		expect(() => {new ThingA().removeEventListener(THING_A_CHANGE_EVENT, unboundFunction);}).to.throw('Event listener "unboundFunction" with value function () { } is not present on object ThingA, ignoring call to _removeEventListener()');
+		expect(() => {thingA.removeEventListener(THING_A_FINISHED_EVENT, unboundFunction);}).not.to.throw();
+		expect(() => {thingA.removeEventListener(THING_A_CHANGE_EVENT, unboundFunction);}).not.to.throw();
+		expect(() => {new ThingA().removeEventListener(THING_A_CHANGE_EVENT, unboundFunction);}).not.to.throw();
+		// expect(() => {thingA.removeEventListener(THING_A_FINISHED_EVENT, unboundFunction);}).to.throw('Event listener "unboundFunction" with value function () { } is not present on object ThingA, ignoring call to _removeEventListener()');
+		// expect(() => {thingA.removeEventListener(THING_A_CHANGE_EVENT, unboundFunction);}).to.throw('Event listener "unboundFunction" with value function () { } is not present on object ThingA, ignoring call to _removeEventListener()');
+		// expect(() => {new ThingA().removeEventListener(THING_A_CHANGE_EVENT, unboundFunction);}).to.throw('Event listener "unboundFunction" with value function () { } is not present on object ThingA, ignoring call to _removeEventListener()');
 	});
 	it('dispatchEvent', () => {
 		// This is mostly tested elsewhere.

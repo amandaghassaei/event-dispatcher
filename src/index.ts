@@ -68,7 +68,7 @@ export class EventDispatcherPrototype<T> {
 				}
 			}
 		}
-		throw new Error(`Event listener "${listener.name}" with value ${listener.toString()} is not present on object ${this.constructor.name}, ignoring call to _removeEventListener().`);
+		// throw new Error(`Event listener "${listener.name}" with value ${listener.toString()} is not present on object ${this.constructor.name}, ignoring call to _removeEventListener().`);
 	}
 
 	/**
