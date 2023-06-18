@@ -30,23 +30,6 @@ Then import via:
 import { EventDispatcherPrototype } from '@amandaghassaei/event-dispatcher';
 ```
 
-### Install as JS
-*OR* in the browser you can add [event-dispatcher.js](https://github.com/amandaghassaei/event-dispatcher/blob/main/dist/event-dispatcher.js) or [event-dispatcher.min.js](https://github.com/amandaghassaei/event-dispatcher/blob/main/dist/event-dispatcher.min.js) to your html:
-```html
-<html>
-    <head>
-        ....
-        <script src="event-dispatcher.min.js"></script>
-    </head>
-    <body>
-    </body>
-</html>
-```
-Then in your js files, you can access the global variable `EVENT_DISPATCHER`:
-
-```js
-const { EventDispatcherPrototype } = EVENT_DISPATCHER;
-```
 
 ## Use
 

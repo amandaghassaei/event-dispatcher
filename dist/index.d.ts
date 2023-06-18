@@ -1,11 +1,11 @@
-type EventListener = (object?: any) => void;
+export type EventListener = (object?: any) => void;
 /**
  * Parent class for typed EventDispatcher subclasses.
  * See https://github.com/amandaghassaei/event-dispatcher#use
  * for an example of how to subclass EventDispatcherPrototype.
  * @param T - The type of events this object should dispatch.
  */
-declare class EventDispatcherPrototype<T> {
+export declare class EventDispatcherPrototype<T> {
     /**
      * @private
      */
@@ -45,5 +45,3 @@ declare class EventDispatcherPrototype<T> {
      */
     dispose(): void;
 }
-
-export { EventDispatcherPrototype, EventListener };
