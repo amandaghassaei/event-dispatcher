@@ -111,7 +111,7 @@ describe('EventDispatcherPrototype', () => {
 		thingA.addEventListener(THING_A_FINISHED_EVENT, listener);
 		expect(popLastWarning()).to.equal(undefined);
 		thingA.addEventListener(THING_A_CHANGE_EVENT, listener);
-		expect(popLastWarning()).to.equal(`Event listener "listener" with value function (thingA) {
+		expect(popLastWarning()).to.equal(`Event listener "listener" with value (thingA) => {
             value += 1;
         } has already been added to object ThingA, ignoring call to _addEventListener().`);
 		expect(popLastWarning()).to.equal(undefined);
