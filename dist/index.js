@@ -100,7 +100,7 @@ export class EventDispatcherPrototype {
      */
     dispose() {
         // Remove all event listeners.
-        this.__listeners = undefined;
+        delete this.__listeners;
     }
 }
 //# sourceMappingURL=index.js.map
