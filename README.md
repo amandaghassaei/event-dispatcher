@@ -38,50 +38,63 @@ import { EventDispatcherPrototype } from '@amandaghassaei/event-dispatcher';
 See full API documentation in [docs/](https://github.com/amandaghassaei/event-dispatcher/tree/main/docs).
 
 ```js
-import {
-  EventDispatcher,
-  Listener,
-} from '@amandaghassaei/event-dispatcher';
+import { EventDispatcher, Listener } from '../src/index';
 
 // Define events and class event types.
-const THING_A_CHANGE_EVENT = 'THING_A_CHANGE_EVENT';
-const THING_A_FINISHED_EVENT = 'THING_A_FINISHED_EVENT';
-const THING_A_REMOVED_EVENT = 'THING_A_REMOVED_EVENT';
-type ThingAEventType =
-  typeof THING_A_CHANGE_EVENT |
-  typeof THING_A_FINISHED_EVENT |
-  typeof THING_A_REMOVED_EVENT;
+const ADDED_EVENT = 'ADDED_EVENT';
+const CHANGE_EVENT = 'CHANGE_EVENT';
+const FINISHED_EVENT = 'FINISHED_EVENT';
+const REMOVED_EVENT = 'REMOVED_EVENT';
+type MyClassEventType =
+    | typeof ADDED_EVENT
+    | typeof CHANGE_EVENT
+    | typeof FINISHED_EVENT
+    | typeof REMOVED_EVENT;
 
-// Create a custom EventDispatcher subclass.
+// Create an EventDispatcher subclass.
 // Use function overloads to define correct typing of subclass event/listener pairs.
 // Event listeners may accept an optional parameter.
-class ThingA extends EventDispatcher<ThingAEventType> {
-  addOneTimeEventListener(type: typeof THING_A_REMOVED_EVENT, listener: () => void): void;
-  addOneTimeEventListener(type: ThingAEventType, listener: Listener) {
-    super.addOneTimeEventListener(type, listener);
-  }
+class MyClass extends EventDispatcher<MyClassEventType> {
+    addOneTimeEventListener(type: typeof ADDED_EVENT, listener: () => void): void;
+    addOneTimeEventListener(type: typeof REMOVED_EVENT, listener: () => void): void;
+    addOneTimeEventListener<S extends MyClassEventType>(type: S, listener: () => void) {
+        super.addOneTimeEventListener(type, listener);
+    }
 
-  addEventListener(type: typeof THING_A_CHANGE_EVENT, listener: (object: ThingA) => void): void;
-  addEventListener(type: typeof THING_A_FINISHED_EVENT, listener: (object: ThingA) => void): void;
-  addEventListener(type: ThingAEventType, listener: Listener) {
-    super.addEventListener(type, listener);
-  }
+    addEventListener(type: typeof CHANGE_EVENT, listener: (object: MyClass) => void): void;
+    addEventListener(type: typeof FINISHED_EVENT, listener: (object: MyClass) => void): void;
+    addEventListener<S extends MyClassEventType>(type: S, listener: Listener) {
+        super.addEventListener(type, listener);
+    }
 
-  removeEventListener(type: typeof THING_A_CHANGE_EVENT, listener: (object: ThingA) => void): void;
-  removeEventListener(type: typeof THING_A_FINISHED_EVENT, listener: (object: ThingA) => void): void;
-  removeEventListener(type: ThingAEventType, listener: Listener) {
-    super.removeEventListener(type, listener);
-  }
+    removeEventListener(type: typeof CHANGE_EVENT, listener: (object: MyClass) => void): void;
+    removeEventListener(type: typeof FINISHED_EVENT, listener: (object: MyClass) => void): void;
+    removeEventListener<S extends MyClassEventType>(type: S, listener: Listener) {
+        super.removeEventListener(type, listener);
+    }
 
-  // You may decide to make dispatchEvent a protected function,
-  // which can only be called from within the subclass.
-  protected _dispatchEvent(type: typeof THING_A_CHANGE_EVENT, object: ThingA): void;
-  protected _dispatchEvent(type: typeof THING_A_FINISHED_EVENT, object: ThingA): void;
-  protected _dispatchEvent(type: typeof THING_A_REMOVED_EVENT): void;
-  protected _dispatchEvent(type: ThingAEventType, object?: any) {
-    super._dispatchEvent(type, object);
-  }
+    // You may decide to make dispatchEvent a protected function,
+    // which can only be called from within the subclass.
+    protected _dispatchEvent(type: typeof CHANGE_EVENT, object: MyClass): void;
+    protected _dispatchEvent(type: typeof FINISHED_EVENT, object: MyClass): void;
+    protected _dispatchEvent(type: typeof REMOVED_EVENT): void;
+    protected _dispatchEvent<S extends MyClassEventType>(type: S, object?: any) {
+        super._dispatchEvent(type, object);
+    }
 }
+
+const instance = new MyClass();
+instance.addEventListener(CHANGE_EVENT, (object) => {
+    console.log('instance changed:', object);
+});
+
+// The following will throw type errors:
+
+// REMOVED_EVENT is not a valid event type for MyClass.addEventListener().
+// instance.addEventListener(REMOVED_EVENT, (object) => {});
+
+// The object parameter must be of type MyClass.
+// instance.addEventListener(CHANGE_EVENT, (object: number) => {});
 ```
 
 ## License

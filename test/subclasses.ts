@@ -20,7 +20,7 @@ type ThingBEventType =
 
 // Create a custom EventDispatcher subclass with correct event typing for your application.
 
-class CustomEventDispatcher<T> extends EventDispatcher<T> {
+class CustomEventDispatcher<T extends string> extends EventDispatcher<T> {
     addOneTimeEventListener(type: typeof THING_A_REMOVED_EVENT, listener: () => void): void;
     addOneTimeEventListener(type: typeof THING_B_REMOVED_EVENT, listener: () => void): void;
     addOneTimeEventListener<S extends T>(type: S, listener: Listener) {

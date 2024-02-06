@@ -8,9 +8,9 @@ for an example of how to subclass EventDispatcherPrototype.
 
 ## Type parameters
 
-| Name | Description |
-| :------ | :------ |
-| `T` | The type of events this object should dispatch. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends `string` | The type of events this object should dispatch. |
 
 ## Table of contents
 
@@ -35,9 +35,9 @@ for an example of how to subclass EventDispatcherPrototype.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `string` |
 
 ## Methods
 
@@ -49,9 +49,9 @@ Add one time event listener for a given event type (removeEventListener is calle
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `S` |
+| Name | Type |
+| :------ | :------ |
+| `S` | extends `string` |
 
 #### Parameters
 
@@ -74,9 +74,9 @@ Add an event listener for a given event type.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `S` |
+| Name | Type |
+| :------ | :------ |
+| `S` | extends `string` |
 
 #### Parameters
 
@@ -99,9 +99,9 @@ Remove an event listener for a given event type.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `S` |
+| Name | Type |
+| :------ | :------ |
+| `S` | extends `string` |
 
 #### Parameters
 
@@ -124,9 +124,9 @@ Dispatch an event from this object.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `S` |
+| Name | Type |
+| :------ | :------ |
+| `S` | extends `string` |
 
 #### Parameters
 

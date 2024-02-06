@@ -5,7 +5,7 @@ export type Listener = (object?: any) => void;
  * for an example of how to subclass EventDispatcherPrototype.
  * @param T - The type of events this object should dispatch.
  */
-export declare class EventDispatcher<T> {
+export declare class EventDispatcher<T extends string> {
     /**
      * @private
      */
