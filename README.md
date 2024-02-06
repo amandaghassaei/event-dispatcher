@@ -1,4 +1,5 @@
 # @amandaghassaei/event-dispatcher
+
 [![NPM Package](https://img.shields.io/npm/v/@amandaghassaei/event-dispatcher)](https://www.npmjs.com/package/@amandaghassaei/event-dispatcher)
 [![Build Size](https://img.shields.io/bundlephobia/min/@amandaghassaei/event-dispatcher)](https://bundlephobia.com/result?p=@amandaghassaei/event-dispatcher)
 [![NPM Downloads](https://img.shields.io/npm/dw/@amandaghassaei/event-dispatcher)](https://www.npmtrends.com/@amandaghassaei/event-dispatcher)
@@ -7,16 +8,16 @@
 
 Parent class to support custom event listeners.
 
-- Written in TypeScript with exported type declarations.
-- Includes unit tests with 100% coverage.
+-   Written in TypeScript with exported type declarations.
+-   Includes unit tests with 100% coverage.
 
 Table of Contents:
 
-- [Installation](#installation)
-- [Use](#use)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-- [Development](#development)
+-   [Installation](#installation)
+-   [Use](#use)
+-   [License](#license)
+-   [Acknowledgements](#acknowledgements)
+-   [Development](#development)
 
 ## Installation
 
@@ -25,11 +26,12 @@ Table of Contents:
 ```sh
 npm install @amandaghassaei/event-dispatcher
 ```
+
 Then import via:
+
 ```js
 import { EventDispatcherPrototype } from '@amandaghassaei/event-dispatcher';
 ```
-
 
 ## Use
 
@@ -37,8 +39,8 @@ See full API documentation in [docs/](https://github.com/amandaghassaei/event-di
 
 ```js
 import {
-  EventDispatcherPrototype,
-  EventListener,
+  EventDispatcher,
+  Listener,
 } from '@amandaghassaei/event-dispatcher';
 
 // Define events and class event types.
@@ -49,72 +51,46 @@ type ThingAEventType =
   typeof THING_A_CHANGE_EVENT |
   typeof THING_A_FINISHED_EVENT |
   typeof THING_A_REMOVED_EVENT;
-const THING_B_CHANGE_EVENT = 'THING_B_CHANGE_EVENT';
-const THING_B_FINISHED_EVENT = 'THING_B_FINISHED_EVENT';
-const THING_B_REMOVED_EVENT = 'THING_B_REMOVED_EVENT';
-type ThingBEventType =
-  typeof THING_B_CHANGE_EVENT |
-  typeof THING_B_FINISHED_EVENT |
-  typeof THING_B_REMOVED_EVENT;
 
 // Create a custom EventDispatcher subclass.
 // Use function overloads to define correct typing of subclass event/listener pairs.
 // Event listeners may accept an optional parameter.
-class EventDispatcher<T> extends EventDispatcherPrototype<T> {
+class ThingA extends EventDispatcher<ThingAEventType> {
   addOneTimeEventListener(type: typeof THING_A_REMOVED_EVENT, listener: () => void): void;
-  addOneTimeEventListener(type: typeof THING_B_REMOVED_EVENT, listener: () => void): void;
-  addOneTimeEventListener(type: any, listener: EventListener) {
-    this._prototype_addOneTimeEventListener(type, listener);
+  addOneTimeEventListener(type: ThingAEventType, listener: Listener) {
+    super.addOneTimeEventListener(type, listener);
   }
 
   addEventListener(type: typeof THING_A_CHANGE_EVENT, listener: (object: ThingA) => void): void;
   addEventListener(type: typeof THING_A_FINISHED_EVENT, listener: (object: ThingA) => void): void;
-  addEventListener(type: typeof THING_B_CHANGE_EVENT, listener: (object: ThingB) => void): void;
-  addEventListener(type: typeof THING_B_FINISHED_EVENT, listener: (object: ThingB) => void): void;
-  addEventListener(type: any, listener: EventListener) {
-    this._prototype_addEventListener(type, listener);
+  addEventListener(type: ThingAEventType, listener: Listener) {
+    super.addEventListener(type, listener);
   }
 
   removeEventListener(type: typeof THING_A_CHANGE_EVENT, listener: (object: ThingA) => void): void;
   removeEventListener(type: typeof THING_A_FINISHED_EVENT, listener: (object: ThingA) => void): void;
-  removeEventListener(type: typeof THING_B_CHANGE_EVENT, listener: (object: ThingB) => void): void;
-  removeEventListener(type: typeof THING_B_FINISHED_EVENT, listener: (object: ThingB) => void): void;
-  removeEventListener(type: any, listener: EventListener) {
-    this._prototype_removeEventListener(type, listener);
+  removeEventListener(type: ThingAEventType, listener: Listener) {
+    super.removeEventListener(type, listener);
   }
 
   // You may decide to make dispatchEvent a protected function,
   // which can only be called from within the subclass.
-  protected dispatchEvent(type: typeof THING_A_CHANGE_EVENT, object: ThingA): void;
-  protected dispatchEvent(type: typeof THING_A_FINISHED_EVENT, object: ThingA): void;
-  protected dispatchEvent(type: typeof THING_B_CHANGE_EVENT, object: ThingB): void;
-  protected dispatchEvent(type: typeof THING_B_FINISHED_EVENT, object: ThingB): void;
-  protected dispatchEvent(type: typeof THING_A_REMOVED_EVENT): void;
-  protected dispatchEvent(type: typeof THING_B_REMOVED_EVENT): void;
-  protected dispatchEvent(type: any, object?: any) {
-    this._prototype_dispatchEvent(type, object);
+  protected _dispatchEvent(type: typeof THING_A_CHANGE_EVENT, object: ThingA): void;
+  protected _dispatchEvent(type: typeof THING_A_FINISHED_EVENT, object: ThingA): void;
+  protected _dispatchEvent(type: typeof THING_A_REMOVED_EVENT): void;
+  protected _dispatchEvent(type: ThingAEventType, object?: any) {
+    super._dispatchEvent(type, object);
   }
-}
-
-// Define your EventListener subclasses.
-class ThingA extends EventDispatcher<ThingAEventType>{
-  ...
-}
-class ThingB extends EventDispatcher<ThingBEventType>{
-  ...
 }
 ```
 
-
 ## License
 
-This work is distributed under an [MIT license](https://github.com/amandaghassaei/event-dispatcher/blob/main/LICENSE).  It has no dependencies.
-
+This work is distributed under an [MIT license](https://github.com/amandaghassaei/event-dispatcher/blob/main/LICENSE). It has no dependencies.
 
 ## Acknowledgements
 
 Inspired by [Three.js's](https://github.com/mrdoob/three.js) EventDispatcher class.
-
 
 ## Development
 
@@ -135,4 +111,3 @@ Test with code coverage:
 ```sh
 npm run test-with-coverage
 ```
-

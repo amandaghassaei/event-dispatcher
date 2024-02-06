@@ -6,17 +6,17 @@
 
 ### Classes
 
-- [EventDispatcherPrototype](classes/EventDispatcherPrototype.md)
+- [EventDispatcher](classes/EventDispatcher.md)
 
 ### Type Aliases
 
-- [EventListener](README.md#eventlistener)
+- [Listener](README.md#listener)
 
 ## Type Aliases
 
-### EventListener
+### Listener
 
-Ƭ **EventListener**: (`object?`: `any`) => `void`
+Ƭ **Listener**: (`object?`: `any`) => `void`
 
 #### Type declaration
 

@@ -5,18 +5,18 @@
  * for an example of how to subclass EventDispatcherPrototype.
  * @param T - The type of events this object should dispatch.
  */
-export class EventDispatcherPrototype {
+export class EventDispatcher {
     /**
-     * Add one time event listener for a given event type (unsubscriber is called after first dispatch).
+     * Add one time event listener for a given event type (removeEventListener is called after first dispatch).
      * @param type - The type of the event as a string.
      * @param listener - An event listener function.
      */
-    _prototype_addOneTimeEventListener(type, listener) {
+    addOneTimeEventListener(type, listener) {
         const _listener = (object) => {
             listener(object);
-            this._prototype_removeEventListener(type, _listener);
+            this.removeEventListener(type, _listener);
         };
-        this._prototype_addEventListener(type, _listener);
+        this.addEventListener(type, _listener);
         // return () => {
         // 	this._removeEventListener(type, _listener);
         // };
@@ -26,7 +26,7 @@ export class EventDispatcherPrototype {
      * @param type - The type of the event as a string.
      * @param listener - An event listener function
      */
-    _prototype_addEventListener(type, listener) {
+    addEventListener(type, listener) {
         if (!this.__listeners)
             this.__listeners = {};
         const listeners = this.__listeners;
@@ -49,7 +49,7 @@ export class EventDispatcherPrototype {
      * @param type - The type of the event as a string.
      * @param listener - The currently bound event listener function.
      */
-    _prototype_removeEventListener(type, listener) {
+    removeEventListener(type, listener) {
         const listeners = this.__listeners;
         if (listeners) {
             const listenerArray = listeners[type];
@@ -68,7 +68,7 @@ export class EventDispatcherPrototype {
      * @param type - The type of the event as a string.
      * @param object - An optional object to pass to event listener function.
      */
-    _prototype_dispatchEvent(type, object) {
+    _dispatchEvent(type, object) {
         if (this.__listeners === undefined)
             return;
         const listeners = this.__listeners;

@@ -1,4 +1,4 @@
-export type EventListener = (object?: any) => void;
+export type Listener = (object?: any) => void;
 // export type EventListenerRemover = () => void;
 
 /**
@@ -7,23 +7,23 @@ export type EventListener = (object?: any) => void;
  * for an example of how to subclass EventDispatcherPrototype.
  * @param T - The type of events this object should dispatch.
  */
-export class EventDispatcherPrototype<T> {
+export class EventDispatcher<T> {
     /**
      * @private
      */
-    private __listeners: { [key: string]: EventListener[] } | undefined;
+    private __listeners: { [key: string]: Listener[] } | undefined;
 
     /**
-     * Add one time event listener for a given event type (unsubscriber is called after first dispatch).
+     * Add one time event listener for a given event type (removeEventListener is called after first dispatch).
      * @param type - The type of the event as a string.
      * @param listener - An event listener function.
      */
-    protected _prototype_addOneTimeEventListener(type: T, listener: EventListener) {
+    addOneTimeEventListener<S extends T>(type: S, listener: Listener) {
         const _listener = (object: any) => {
             listener(object);
-            this._prototype_removeEventListener(type, _listener);
+            this.removeEventListener(type, _listener);
         };
-        this._prototype_addEventListener(type, _listener);
+        this.addEventListener(type, _listener);
         // return () => {
         // 	this._removeEventListener(type, _listener);
         // };
@@ -34,7 +34,7 @@ export class EventDispatcherPrototype<T> {
      * @param type - The type of the event as a string.
      * @param listener - An event listener function
      */
-    protected _prototype_addEventListener(type: T, listener: EventListener) {
+    addEventListener<S extends T>(type: S, listener: Listener) {
         if (!this.__listeners) this.__listeners = {};
         const listeners = this.__listeners;
         if (listeners[type as string] === undefined) {
@@ -62,7 +62,7 @@ export class EventDispatcherPrototype<T> {
      * @param type - The type of the event as a string.
      * @param listener - The currently bound event listener function.
      */
-    protected _prototype_removeEventListener(type: T, listener: EventListener) {
+    removeEventListener<S extends T>(type: S, listener: Listener) {
         const listeners = this.__listeners;
         if (listeners) {
             const listenerArray = listeners[type as string];
@@ -82,7 +82,7 @@ export class EventDispatcherPrototype<T> {
      * @param type - The type of the event as a string.
      * @param object - An optional object to pass to event listener function.
      */
-    protected _prototype_dispatchEvent(type: T, object?: any) {
+    protected _dispatchEvent<S extends T>(type: S, object?: any) {
         if (this.__listeners === undefined) return;
         const listeners = this.__listeners;
         let listenerArray = listeners[type as string];

@@ -1,6 +1,6 @@
-[@amandaghassaei/event-dispatcher](../README.md) / EventDispatcherPrototype
+[@amandaghassaei/event-dispatcher](../README.md) / EventDispatcher
 
-# Class: EventDispatcherPrototype<T\>
+# Class: EventDispatcher<T\>
 
 Parent class for typed EventDispatcher subclasses.
 See https://github.com/amandaghassaei/event-dispatcher#use
@@ -16,22 +16,22 @@ for an example of how to subclass EventDispatcherPrototype.
 
 ### Constructors
 
-- [constructor](EventDispatcherPrototype.md#constructor)
+- [constructor](EventDispatcher.md#constructor)
 
 ### Methods
 
-- [addOneTimeEventListener](EventDispatcherPrototype.md#addonetimeeventlistener)
-- [addEventListener](EventDispatcherPrototype.md#addeventlistener)
-- [removeEventListener](EventDispatcherPrototype.md#removeeventlistener)
-- [\_dispatchEvent](EventDispatcherPrototype.md#_dispatchevent)
-- [getNumberOfListenersForEvent](EventDispatcherPrototype.md#getnumberoflistenersforevent)
-- [dispose](EventDispatcherPrototype.md#dispose)
+- [addOneTimeEventListener](EventDispatcher.md#addonetimeeventlistener)
+- [addEventListener](EventDispatcher.md#addeventlistener)
+- [removeEventListener](EventDispatcher.md#removeeventlistener)
+- [\_dispatchEvent](EventDispatcher.md#_dispatchevent)
+- [getNumberOfListenersForEvent](EventDispatcher.md#getnumberoflistenersforevent)
+- [dispose](EventDispatcher.md#dispose)
 
 ## Constructors
 
 ### constructor
 
-• **new EventDispatcherPrototype**<`T`\>()
+• **new EventDispatcher**<`T`\>()
 
 #### Type parameters
 
@@ -58,7 +58,7 @@ Add one time event listener for a given event type (removeEventListener is calle
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `type` | `S` | The type of the event as a string. |
-| `listener` | [`EventListenerPrototype`](../README.md#eventlistenerprototype) | An event listener function. |
+| `listener` | [`Listener`](../README.md#listener) | An event listener function. |
 
 #### Returns
 
@@ -83,7 +83,7 @@ Add an event listener for a given event type.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `type` | `S` | The type of the event as a string. |
-| `listener` | [`EventListenerPrototype`](../README.md#eventlistenerprototype) | An event listener function |
+| `listener` | [`Listener`](../README.md#listener) | An event listener function |
 
 #### Returns
 
@@ -108,7 +108,7 @@ Remove an event listener for a given event type.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `type` | `S` | The type of the event as a string. |
-| `listener` | [`EventListenerPrototype`](../README.md#eventlistenerprototype) | The currently bound event listener function. |
+| `listener` | [`Listener`](../README.md#listener) | The currently bound event listener function. |
 
 #### Returns
 
